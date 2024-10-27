@@ -105,7 +105,7 @@ p + ggtitle("n = 9") +
 print(paste('mean = ', mean(my1000$k9),' sd = ',sd(my1000$k9)))
 
 ```
-For the sample size of 9, we see that the mean has remained similar or in close numerical range to the other sample sizes. According to the CLT the sd has been reduced by a little less than half. In this graph we see two prominent peaks.
+For the sample size of 9, we see that the mean has remained similar or in close numerical range to the other sample sizes according to the CLT, also the sd has been reduced by a little less than half. In this graph we see two prominent peaks.
 
 
 ```{r}
@@ -129,7 +129,7 @@ print(paste('mean = ', mean(my1000$k16),' sd = ',sd(my1000$k16)))
 
 ```
 
-The CLT states that the sd for a sample size of 16 has changed by less than 5 integers. The mean again has remained similar to the other sample sizes. In this graph we see only two prominent peaks.
+The CLT states that the sd for a sample size of 16 has changed by less than 5 integers. The mean again has remained similar to the other sample sizes as states CLT. In this graph we see only two prominent peaks.
 
 ```{r}
 numb = 25
@@ -152,15 +152,34 @@ print(paste('mean = ', mean(my1000$k25),' sd = ',sd(my1000$k25)))
 
 ```
 
-Here we see the graph is rounding out, there is one prominent peak, there is a vertex as the graph becomes a parabolic shape. The CLT states that the sd this time of sample size 25 has changed by around 5 integers. The mean still remains close to the other means of the other sample sizes.
+Here we see the graph is rounding out, there is one prominent peak, there is a vertex as the graph becomes a parabolic shape. The CLT states that the sd this time of sample size 25 has changed by around 5 integers. The mean still remains close to the other means of the other sample sizes according to the CLT.
 
 
+```{r}
+numb = 36
+Hdata = Homers_data[sample(1:1000,size=numb*1000, replace=T),"kkardashtemp"]
+mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+my1000$k36 = x.avg
 
 
+p <- ggplot(my1000, aes(x=k36),col=sex) + 
+  geom_density() +
+
+# Add mean line
+ geom_vline(aes(xintercept=mean(k36)),
+            color="blue", linetype="dashed", size=1)
+p + ggtitle("n = 36") +
+  xlab("temperature") + ylab(" density")
+
+print(paste('mean = ', mean(my1000$k36),' sd = ',sd(my1000$k36)))
+
+```
+
+The graph again for sample size 36 shows one prominent peak. The CLT states that the sd for this sample size has been reduced by less that 3 integers. The sd as the sample size has grown has gotten smaller and smaller. The mean has remained similar in all sample sizes according to the CLT.
 
 
-
-
+I really tried my best to follow the zoom recording and the instrcutions in canvas :D. I apologize for mistakes or things that I didn't quite understand. 
 
 
 

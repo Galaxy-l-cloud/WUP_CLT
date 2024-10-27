@@ -93,11 +93,11 @@ x.avg <- apply(mdata,1,mean)
 my1000$k9 = x.avg
 
 
-p <- ggplot(my1000, aes(x=k4),col=sex) + 
+p <- ggplot(my1000, aes(x=k9),col=sex) + 
   geom_density() +
 
 # Add mean line
- geom_vline(aes(xintercept=mean(k4)),
+ geom_vline(aes(xintercept=mean(k9)),
             color="blue", linetype="dashed", size=1)
 p + ggtitle("n = 9") +
   xlab("temperature") + ylab(" density")
@@ -105,7 +105,7 @@ p + ggtitle("n = 9") +
 print(paste('mean = ', mean(my1000$k9),' sd = ',sd(my1000$k9)))
 
 ```
-
+For the sample size of 9, we see that the mean has remained similar or in close numerical range to the other sample sizes. According to the CLT the sd has been reduced by a little less than half. In this graph we see two prominent peaks.
 
 
 

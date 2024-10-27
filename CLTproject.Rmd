@@ -108,4 +108,35 @@ print(paste('mean = ', mean(my1000$k9),' sd = ',sd(my1000$k9)))
 For the sample size of 9, we see that the mean has remained similar or in close numerical range to the other sample sizes. According to the CLT the sd has been reduced by a little less than half. In this graph we see two prominent peaks.
 
 
+```{r}
+numb = 16
+Hdata = Homers_data[sample(1:1000,size=numb*1000, replace=T),"kkardashtemp"]
+mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+my1000$k16 = x.avg
+
+
+p <- ggplot(my1000, aes(x=k16),col=sex) + 
+  geom_density() +
+
+# Add mean line
+ geom_vline(aes(xintercept=mean(k9)),
+            color="blue", linetype="dashed", size=1)
+p + ggtitle("n = 16") +
+  xlab("temperature") + ylab(" density")
+
+print(paste('mean = ', mean(my1000$k16),' sd = ',sd(my1000$k16)))
+
+```
+
+The CLT states that the sd for a sample size of 16 has changed by less than 5 integers. The mean again has remained similar to the other sample sizes. In this graph we see only one prominent peak.
+
+
+
+
+
+
+
+
+
 

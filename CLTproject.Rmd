@@ -129,7 +129,39 @@ print(paste('mean = ', mean(my1000$k16),' sd = ',sd(my1000$k16)))
 
 ```
 
-The CLT states that the sd for a sample size of 16 has changed by less than 5 integers. The mean again has remained similar to the other sample sizes. In this graph we see only one prominent peak.
+The CLT states that the sd for a sample size of 16 has changed by less than 5 integers. The mean again has remained similar to the other sample sizes. In this graph we see only two prominent peaks.
+
+```{r}
+numb = 25
+Hdata = Homers_data[sample(1:1000,size=numb*1000, replace=T),"kkardashtemp"]
+mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+my1000$k25 = x.avg
+
+
+p <- ggplot(my1000, aes(x=k25),col=sex) + 
+  geom_density() +
+
+# Add mean line
+ geom_vline(aes(xintercept=mean(k25)),
+            color="blue", linetype="dashed", size=1)
+p + ggtitle("n = 25") +
+  xlab("temperature") + ylab(" density")
+
+print(paste('mean = ', mean(my1000$k25),' sd = ',sd(my1000$k25)))
+
+```
+
+Here we see the graph is rounding out, there is one prominent peak, there is a vertex as the graph becomes a parabolic shape. The CLT states that the sd this time of sample size 25 has changed by around 5 integers. The mean still remains close to the other means of the other sample sizes.
+
+
+
+
+
+
+
+
+
 
 
 
